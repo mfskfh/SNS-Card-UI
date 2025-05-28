@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습 - SNS 카드 만들기</title>
+
+	<!-- CSS 코드 -->
+  <style>
+    .card {
+        width: 300px;
+        margin: 80px auto;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+    .profile-img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+    .nickname {
+        font-weight: bold;
+    }
+    .main-img {
+        width: 100%;
+    }
+    .like-icon {
+        cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <!-- 프로필 이미지 -->
+      <img class="profile-img" src="https://images.pexels.com/photos/4197491/pexels-photo-4197491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+      <!-- 프로필 닉네임 -->
+      <span class="nickname">mini</span>
+    </div>
+    
+    <!-- 메인 이미지 -->
+    <img class="main-img" src="https://images.pexels.com/photos/907485/pexels-photo-907485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+
+    <div class="actions">
+      <!-- 좋아요 아이콘 -->
+      <span id="like-icon" class="like-icon">🤍</span>
+      <span>좋아요</span>
+      
+      <!-- 좋아요 개수 -->
+      <span id="count">0</span>
+      <span>개</span>
+    </div>
+
+    <!-- 내용 -->
+    <p class="caption">하늘 예쁘다</p>
+  </div>
+  <!-- JS 코드 -->
+  <script>
+    document.querySelector("#like-icon").addEventListener("click", function() {
+        document.querySelector("#like-icon").textContent = "♥️"
+        document.querySelector("#count").textContent = "1"
+    })
+  </script>
+</body>
+</html>
