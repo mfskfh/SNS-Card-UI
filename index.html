@@ -24,6 +24,8 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
+        outline: 2px solid #d6296b;
+        cursor: pointer;
     }
     .nickname {
         font-weight: bold;
@@ -34,13 +36,26 @@
     .like-icon {
         cursor: pointer;
     }
+    
+    /* 모달창 스타일 */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 50px;
+      background: rgba(0, 0, 0, 0.8);
+      text-align: center;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="card-header">
       <!-- 프로필 이미지 -->
-      <img class="profile-img" src="https://images.pexels.com/photos/4197491/pexels-photo-4197491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+      <img id="profile-img" class="profile-img" src="https://images.pexels.com/photos/4197491/pexels-photo-4197491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
       <!-- 프로필 닉네임 -->
       <span class="nickname">mini</span>
     </div>
@@ -61,11 +76,44 @@
     <!-- 내용 -->
     <p class="caption">하늘 예쁘다</p>
   </div>
+
+  <div id="modal" class="modal">
+    <img
+    class="modal_img"
+    src="https://t1.daumcdn.net/brunch/service/user/2D9/image/ca_00bfhDhi-1YygG8Rej8BSN8g.png"
+    alt="이미지 스토리"
+    >
+  </div>
+
   <!-- JS 코드 -->
   <script>
-    document.querySelector("#like-icon").addEventListener("click", function() {
-        document.querySelector("#like-icon").textContent = "♥️"
-        document.querySelector("#count").textContent = "1"
+    const likeIcon = document.querySelector("#like-icon")
+    const likeCount = document.querySelector("#count")
+    const profileImg = document.querySelector("#profile-img")
+    const modalImg = document.querySelector("#modal")
+
+
+    let likeCountNum = 0
+
+
+    likeIcon.addEventListener("click", function() {
+        if(likeIcon.textContent === "🤍"){
+          likeIcon.textContent = "♥️"
+          likeCountNum += 1
+          likeCount.textContent = likeCountNum
+        }else{
+          likeIcon.textContent = "🤍"
+          likeCountNum -= 1
+          likeCount.textContent = likeCountNum
+        }
+
+    })
+    profileImg.addEventListener("click", function() {
+      modalImg.style.display = "block"
+    })
+
+    modalImg.addEventListener("click", function() {
+      modalImg.style.display = "none"
     })
   </script>
 </body>
